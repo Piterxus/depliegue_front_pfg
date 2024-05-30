@@ -1,0 +1,53 @@
+.detalleFactura {
+    /* width: 420px;
+    height: 595px; */
+    border: 1px solid #000;
+    background: #FFF;
+}
+
+.facturaLogo {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    margin: 5px;
+}
+
+strong {
+    font-size: 9px;
+    font-family: Inter;
+    margin: 5px;
+
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px;
+    font-size: 10px;
+    font-family: Inter;
+}
+
+table{
+    font-size: 10px;
+}
+
+.fechaFactura {
+    font-size: 10px;
+    font-family: Inter;
+    margin: 5px;
+}
+hr{
+    width: 400px;
+    height: 1px;
+    color: #D9D9D9;
+}
+
+.imprimir{
+    background-color: var(--wedgewood600);
+    background-image: url(/assets/img/socios/print.svg);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 420px;
+    padding: 5px;
+}

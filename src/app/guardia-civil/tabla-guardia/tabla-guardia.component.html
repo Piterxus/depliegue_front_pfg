@@ -1,0 +1,42 @@
+<table [dtTrigger]="dtTrigger"  datatable [dtOptions]="dtOptions"  class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped"  >
+    <thead>
+        <tr>
+            <th [attr.colspan]="12">
+                TRANSITOS
+            </th>
+        </tr>
+        <tr class="cabeceraDatos text-center">
+            
+        <th class="text-center" >Puerto</th>
+        <th class="text-center" >Hora entrada</th>
+        <th class="text-center" >Hora salida</th>
+        <th class="text-center">Matricula</th>
+        <th class="text-center">Titular</th>
+        <th class="text-center">Tipo</th>
+        <th class="text-center">Bandera</th>
+        <th class="text-center">Estado</th>
+        <th> <input (click)="seleccionarTodas()" class="text-center" type="checkbox" [checked]="selectAll"></th>
+
+       
+        </tr>
+</thead>
+    <tbody>
+        <!-- aqui se rellena la tabla y se crean las clases para aplicarle el translucido y poner los checkbox -->
+        <tr  *ngFor="let transit of datos;let i=index" class=" text-center" [ngClass]="{'color-translucido': seleccionados[i]}" class="estados" >
+            <td>{{ transit.Ubicacion }}</td>
+            <td>{{ transit.FechaEntrada }}</td>
+            <td>{{ transit.FechaSalida }}</td>
+            <td>{{ transit.Matricula }}</td>
+            <td>{{ transit.Titular }}</td>
+            <td>{{ transit.Tipo }}</td>
+            <td>{{ transit.Origen }}</td>
+            <td [ngClass]="{'fondo-salida': transit.Estatus === 'Salida', 'fondo-entrada': transit.Estatus === 'Entrada'}" class="Estatus" >{{ transit.Estatus }}</td>
+            <td><input (click)="marcar(i,transit)" class="eliminar" type="checkbox" [checked]="seleccionados[i]" ></td>
+            
+            
+    
+        </tr>
+       
+    </tbody>
+    
+</table>

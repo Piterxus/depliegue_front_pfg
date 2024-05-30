@@ -1,0 +1,57 @@
+<div class="tablaMiembros">
+  <div class="d-flex flex-row-reverse mb-2">
+
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <table
+      [dtTrigger]="dtTrigger"
+      datatable
+      [dtOptions]="dtOptions"
+      class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped"
+    >
+
+      <thead>
+        <tr>
+          <th [attr.colspan]="12" class="cabeceraTabla">
+            AMARRES
+            <a routerLink="./formulario" [queryParams]="{ tipo: 'vacio' }">
+              <img class="addIcon" [src]="'/assets/img/add_solid.svg'" alt="" />
+            </a>
+          </th>
+        </tr>
+        <tr class="cabeceraDatos">
+          <th class="text-center">Ubicación</th>
+          <th class="text-center">Manga</th>
+          <th class="text-center">Eslora</th>
+
+          <th class="text-center">Costo</th>
+
+ 
+          <!-- <th></th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          (click)="someClickHandler(i)"
+          *ngFor="let item of datos; let i = index"
+        
+        >
+          <td>{{ item.PlazaBase_id }}</td>
+          <td>{{ item.boat.Manga }}</td>
+          <td>{{ item.boat.Eslora }}</td>
+          <td>{{ item.costeAmarre }} €</td>
+          <!-- <td>
+            <img
+              class="deleteIcon"
+              [src]="'/assets/img/socios/delete.svg'"
+              alt=""
+               (click)="test()"
+            />
+          </td> -->
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

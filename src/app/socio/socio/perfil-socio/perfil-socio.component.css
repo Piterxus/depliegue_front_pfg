@@ -1,0 +1,93 @@
+
+
+form {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+    width: 50%;
+}
+
+.formLeft {
+    margin-right: 100px;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 30px;
+
+
+}
+
+input[name='Usuario'] {
+    background-image: url(/assets/img/formIcon_user.svg);
+
+}
+
+input[name='Telefono'] {
+    background-image: url(/assets/img/telefono.svg);
+
+}
+
+
+
+input[name='Email'] {
+    background-image: url(/assets/img/IconEmailForm.svg);
+
+}
+
+input[name='Direccion'] {
+    background-image: url(/assets/img/direccion.svg);
+
+}
+
+input[name='Contraseña'] {
+    background-image: url(/assets/img/IconPassForm.svg);
+
+}
+
+
+
+
+
+label {
+    width: 150px;
+    font-weight: bold;
+}
+
+
+
+.btnCancelar {
+    text-decoration: none;
+    background-color: var(--goldenTainoi300);
+    color: var(--goldenTainoi900);
+}
+
+.btnAdd {
+    background-color: var(--titanWhite900);
+    color: var(--titanWhite50);
+    margin-left: 10px;
+}
+
+.btnsPerfil {
+   width: 100%;
+  
+}
+
+
+
+/* .imgUser {
+    width: 200px;
+    height: 200px;
+} */

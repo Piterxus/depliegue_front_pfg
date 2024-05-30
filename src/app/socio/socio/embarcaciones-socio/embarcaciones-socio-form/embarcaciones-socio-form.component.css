@@ -1,0 +1,110 @@
+form {
+    background-color: #FFFFFF;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+    /* width: 50%; */
+}
+
+
+
+h4 {
+    font-family: Questrial;
+}
+
+input {
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 30px;
+
+
+}
+
+input[name='Manga'],
+input[name='Eslora'] {
+    background-image: url(/assets/img/embarcaciones/formIcon_es.svg);
+
+}
+
+
+
+
+
+
+label {
+    width: 150px;
+    font-weight: bold;
+}
+
+
+
+.btnCancelar {
+    text-decoration: none;
+    background-color: var(--goldenTainoi300);
+    color: var(--goldenTainoi900);
+}
+
+.btnAdd {
+    background-color: var(--titanWhite900);
+    color: var(--titanWhite50);
+    margin-left: 10px;
+}
+
+.btnsAmarre {
+    width: 100%;
+
+
+}
+
+.btnVista {
+    background-color: var(--regentStBlue300);
+    color: var(--regentStBlue950);
+    margin-left: 10px;
+}
+
+.btnDelete {
+    background-color: var(--gold500);
+    color: var(--gold950);
+    margin-left: 10px;
+}
+
+.btnBack {
+    background-color: var(--wedgewood500);
+    color: var(--wedgewood50);
+    border-color: var(--wedgewood700);
+}
+
+.containerMap {
+    width: 900px;
+    margin-left: 20px;
+
+}
+
+#map {
+
+    width: 600px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
+
+
+}
+
+small {
+    margin-left: 10px;
+}
+
+/* .imgUser {
+    width: 200px;
+    height: 200px;
+} */

@@ -1,0 +1,106 @@
+<div class="contenedor">
+  <!-- <app-navlateral></app-navlateral> -->
+  <!-- <nav class="navLat col-md-2 d-flex flex-column">
+    <img alt="Bootstrap Image Preview" src="/assets/img/Group.svg" class="logo" />
+   
+    <div *ngIf="role==='2'">
+
+    </div>
+
+  </nav> -->
+
+  <div class="contenido">
+    <div class="d-flex navs">
+      <div class="logoPfd"></div>
+      <!-- <img class="logoPfd" src="/assets/img/socios/log_PFD_nav.svg" alt=""> -->
+
+      <div>
+        <nav class="navAlto d-flex justify-content-between">
+          <div class="altLinks">
+            <a routerLink="../panel" class="altLink">PANEL PRINCIPAL</a>
+            <a routerLink="../facturas" class="altLink">VER FACTURAS</a>
+            <a routerLink="../formas-pago/formulario" class="altLink"
+              >PAGOS</a
+            >
+          </div>
+          <div>
+            <input type="search" name="" id="" />
+            <img
+              src="/assets/img/offLogout.svg"
+              alt=""
+              class="offLogout"
+              (click)="logout()"
+            />
+            <span class="salir">Salir</span>
+          </div>
+        </nav>
+        <nav
+          class="navBajo navbar navbar-expand-sm navbar-dark test1 d-flex justify-content-between"
+        >
+          <div class="d-flex align-items-center">
+            <a class="navbar-brand userSocio" routerLink="../perfil">
+              <img
+                src="/assets/img/socios/user.svg"
+                alt="Avatar Logo"
+                style="width: 40px"
+                class="rounded-pill userIcon"
+              />
+            </a>
+            <h6 class="mb-0 mr-3">¡Hola {{ name }}!</h6>
+          </div>
+          <!-- Agregado margen a la derecha -->
+          <div class="d-flex questions">
+            <!-- <a *ngIf="role==='2'" class="navbar-brand" routerLink="../notificaciones"> Prescindo mientras maqueto-->
+            <a class="navbar-brand" routerLink="../notificaciones">
+              <img
+                src="/assets/img/socios/interrogante.svg"
+                alt="Avatar Logo"
+                style="width: 40px"
+                class="rounded-pill notIcon"
+              />
+            </a>
+            <a class="navbar-brand" routerLink="../notificaciones">
+              <img
+                src="/assets/img/socios/sobre.svg"
+                alt="Avatar Logo"
+                style="width: 40px"
+                class="rounded-pill notIcon"
+              />
+            </a>
+
+            <!-- <a class="navbar-brand" href="" (click)="logout()">
+                <img
+                  src="/assets/img/logout.svg"
+                  alt="Avatar Logo"
+                  style="width: 40px"
+                  class="rounded-pill logoutIcon"
+                />
+              </a> -->
+          </div>
+        </nav>
+      </div>
+    </div>
+
+    <div class="contenido-interno" #contenidoInternoRef>
+      <img
+        src="/assets/img/socios/home.svg"
+        alt="Avatar Logo"
+     
+        class="notIcon"
+      />
+      {{ currentRoute }}
+      <hr />
+      <!-- <h1 class="text-center headerPanel">Consulta general</h1> -->
+      <h1 class="text-center headerPanel">{{ routeName }}</h1>
+      <router-outlet></router-outlet>
+      <div *ngIf="showArrows" class="flechas-container">
+        <!-- Botón de flecha para desplazamiento hacia arriba -->
+        <!-- <button class="flecha-top" (click)="scrollUp()">&#9650;</button> -->
+        <img src="/assets/img/socios/scrollUp.svg" alt="" class="flecha-top" (click)="scrollUp()">
+         <img src="/assets/img/socios/scrollDown.svg" alt="" class="flecha-bottom" (click)="scrollDown()">
+        <!-- Botón de flecha para desplazamiento hacia abajo -->
+        <!-- <button class="flecha-bottom" (click)="scrollDown()">&#9660;</button> -->
+      </div>
+    </div>
+  </div>
+</div>

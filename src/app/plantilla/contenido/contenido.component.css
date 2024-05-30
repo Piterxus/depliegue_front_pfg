@@ -1,0 +1,189 @@
+/* .contenedor {
+
+  display: flex;
+  height: 100vh;
+
+
+} */
+
+
+
+.contenido {
+  height: 100vh;
+  background-color: #eaeff4;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.contenido-interno {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  max-height: calc(100vh - 10vh - 5vh);
+  scrollbar-width: none;
+  position: relative;
+}
+
+.flechas-container {
+  position: fixed;
+  /* Fija el contenedor en la pantalla */
+  top: 50%;
+  /* Ajusta la posición vertical según tu preferencia */
+  right: 0;
+  /* Alinea el contenedor a la derecha */
+  transform: translateY(-50%);
+  /* Centra verticalmente el contenedor */
+  display: flex;
+  flex-direction: column;
+}
+
+.flecha-top,
+.flecha-bottom {
+  width: 30px;
+  /* Ajusta el tamaño según tus necesidades */
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  color: #000;
+  /* Cambia el color según tu diseño */
+  font-size: 24px;
+  /* Ajusta el tamaño del ícono según tus necesidades */
+  cursor: pointer;
+}
+
+.flecha-top {
+  margin-bottom: 300px;
+  /* Empuja la flecha hacia arriba, cerca del borde superior */
+}
+
+.flecha-bottom {
+  margin-top: 150px;
+  /* Empuja la flecha hacia abajo, cerca del borde inferior */
+}
+
+
+.contenido-interno::-webkit-scrollbar {
+  display: none;
+  /* Oculta el scrollbar en navegadores webkit (Chrome, Safari, etc.) */
+}
+
+.logoPfd {
+  width: 200px;
+  height: 10vh;
+
+  background-image: url(/assets/img/socios/log_PFD_nav.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  /* margin: 20px; */
+
+}
+
+.altLink {
+  text-decoration: none;
+  color: #F5F7FA;
+  margin: 5px;
+  font-weight: lighter;
+}
+
+.navLat {
+  width: 200px;
+  height: 100vh;
+  flex-shrink: 0;
+  background-color: var(--Wedgewood-500, #4f7796);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 20px;
+}
+
+.navAlto {
+  width: 89.6vw;
+  height: 5vh;
+  background-color: #36536E;
+  padding: 10px;
+
+}
+
+.headerPanel {
+  font-weight: lighter;
+  font-family: Questrial;
+}
+
+.offLogout {
+  cursor: pointer;
+  margin-left: 5px;
+  width: 20px
+}
+
+input[type='search'] {
+
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: 20px;
+  background-image: url(/assets/img/socios/lupa.svg);
+
+}
+
+.salir {
+  color: #F5F7FA;
+  margin: 5px;
+  font-weight: normal;
+}
+
+.navBajo {
+  /* width: 100%; */
+  height: 5vh;
+  background-color: #A6BED3;
+}
+
+
+.altLink:hover,
+.altLink:active,
+.altLink:focus {
+  background-color: #8CA1B4;
+  color: #1D2834;
+  padding: 5vh 0 5vh 0;
+}
+.notIcon{
+  width: 20px;
+ 
+
+}
+@media screen and (max-width: 992px) {
+
+  /* Dispositivos medianos */
+  .logo {
+    visibility: hidden;
+  }
+
+  .contenedor {
+    flex-direction: column;
+    /* Cambia a modo columna */
+  }
+
+  .navAlt {
+    height: 10vh;
+
+  }
+
+  .navLat {
+    width: 100%;
+    /* O el ancho deseado */
+    height: 50px;
+    /* Ajusta la altura automáticamente */
+    display: flex;
+  }
+
+
+}

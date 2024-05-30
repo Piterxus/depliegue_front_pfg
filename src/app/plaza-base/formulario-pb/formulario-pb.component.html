@@ -1,0 +1,235 @@
+<div class="formularioPlazaBase">
+  <div *ngIf="mostrarVacio">
+    <div class="formHeader">
+      <h5>&nbsp;&nbsp;RESERVA DE PLAZA BASE</h5>
+    </div>
+
+    <form
+      id="formPlazabase"
+      action=""
+      class="d-flex"
+      (submit)="guardarPlazaBase()"
+    >
+      <div class="formLeft">
+        <div class="mb-3 d-flex">
+          <label>Feche Entrada:</label>
+          <input type="date" name="FechaInicio" [(ngModel)]="FechaInicio" (ngModelChange)="validarFechaFinalizacion()"/>
+        </div>
+        <div class="mb-3 d-flex">
+          <label>Fecha de finalización de contrato:</label>
+          <input
+            type="date"
+            name="FechaFinalizacion"
+            [(ngModel)]="FechaFinalizacion"
+            [min] = "minDate"
+          />
+        </div>
+
+        <div class="mb-3 d-flex">
+          <label for="Instalacion" class="form-label">Instalación:</label>
+          <select
+            [(ngModel)]="selectedInstalacion"
+            name="Instalacion"
+            (change)="onChangeInstalacion()"
+          >
+            <option
+              *ngFor="let instalacion of instalaciones"
+              [value]="instalacion.id"
+            >
+              {{ instalacion.Ubicacion }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="Pantalan" class="form-label">Pantalanes:</label>
+          <select
+            *ngIf="selectedInstalacion"
+            [(ngModel)]="selectedPantalan"
+            name="Pantalan"
+            (change)="onChangePantalan()"
+          >
+            <option *ngFor="let pantalan of pantalanes" [value]="pantalan.id">
+              {{ pantalan.Nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="Amarre" class="form-label">Amarres disponibles:</label>
+          <select
+            *ngIf="selectedPantalan"
+            [(ngModel)]="selectedAmarre"
+            name="Amarre"
+          >
+            <option *ngFor="let amarre of amarres" [value]="amarre.id">
+              {{ amarre.Numero }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="formRight">
+        <div class="mb-3 d-flex">
+          <label for="Embarcacion" class="form-label">Embarcacion:</label>
+          <select
+            [(ngModel)]="selectedEmbarcacion"
+            name="Embarcacion"
+            (change)="onChangeEmbarcacion()"
+          >
+            <option
+              *ngFor="let embarcacion of embarcaciones"
+              [value]="embarcacion.id"
+            >
+              Matricula: {{ embarcacion.Matricula }}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="Titular" class="form-label">Titular:</label>
+          <input type="text" name="Titular" readonly [(ngModel)]="titular" />
+        </div>
+        <input
+          type="hidden"
+          id="campoOculto"
+          name="campoOculto"
+          [value]="idLocalStorage"
+        />
+
+        <div class="d-flex justify-content-end mt-5">
+          <button class="btn btnCancelar" routerLink="../tabla">
+            CANCELAR
+          </button>
+          <button type="submit" class="btn btnAdd">AÑADIR</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="mostrarVacio === false">
+    <div class="formHeader">
+      <h5 >PLAZA BASE {{ plazaBSeleccionada.Plaza}} </h5>
+    </div>
+    <form
+      id="formPlazaBaseModificar"
+      action=""
+      class="d-flex"
+      enctype="multipart/form-data"
+    >
+      <div class="formLeft">
+        <div class="mb-3 d-flex">
+          <label for="FechaInicio" class="form-label">Fecha Inicio:</label>
+          <input
+            name="FechaInicioEdicion"
+            id="FechaInicio"
+            type="date"
+            class="form-control mt-4"
+            placeholder="Nombre"
+            [value]="plazaBSeleccionada.FechaInicio | date:'yyyy-MM-dd'"
+            [readOnly]="true"
+          />
+        </div>
+        <!-- Aquí funsiona -->
+        <div class="mb-3 d-flex">
+          <label for="FechaFinalizacion" class="form-label">Fecha de finalización de contrato:</label>
+          <!-- Input visible cuando se permite la edición -->
+          <input
+            *ngIf="editarFechaFinalizacion"
+            name="FechaFinalizacion"
+            type="date"
+            class="form-control mt-4"
+            placeholder="FechaFinalizacion"
+            [(ngModel)]="plazaBSeleccionada.FechaFinalizacion"
+            [min]="minDateActualizada"
+          />
+          <!-- Input oculto que muestra el valor siempre -->
+          <input
+            *ngIf="!editarFechaFinalizacion"
+            type="date"
+            class="form-control mt-4"
+            [value]="plazaBSeleccionada.FechaFinalizacion | date:'yyyy-MM-dd'"
+            disabled
+          />
+       
+        </div>
+       <b> <span *ngIf="editarFechaFinalizacion" class="text-muted">Fecha finalización actual: {{ plazaBSeleccionada.FechaFinalizacion | date:'yyyy-MM-dd' }}</span></b>
+        <div class="mb-3 d-flex">
+          <label for="Instalacion" class="form-label">Instalación:</label>
+          <input
+            name="Instalacion"
+            type="text"
+            class="form-control mt-4"
+            placeholder="Instalacion"
+            [(ngModel)]="plazaBSeleccionada.Instalacion"
+            [readOnly]="true"
+          />
+       
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="Pantalan" class="form-label">Pantalanes:</label>
+          <input
+            name="Pantalan"
+            type="text"
+            class="form-control mt-4"
+            placeholder="Pantalan"
+            [(ngModel)]="plazaBSeleccionada.Pantalan"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="Amarre" class="form-label">Amarre:</label>
+          <input
+            name="Amarre"
+            type="text"
+            class="form-control mt-4"
+            placeholder="Amarre"
+            [(ngModel)]="plazaBSeleccionada.Plaza"
+            [readOnly]="true"
+          />
+        </div>
+              
+      </div>
+      <div class="formRight">
+        <div class="mb-3 d-flex">
+          <label for="Embarcacion" class="form-label">Embarcacion:</label>
+          <input
+            name="Embarcacion"
+            type="text"
+            class="form-control mt-4"
+            placeholder="Embarcacion"
+            [(ngModel)]="plazaBSeleccionada.Matricula"
+            [readOnly]="true"
+          />
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="Titular" class="form-label">Titular:</label>
+          <input
+            name="Titular"
+            type="text"
+            class="form-control mt-4"
+            placeholder="Titular"
+            [(ngModel)]="plazaBSeleccionada.Titular"
+            [readOnly]="true"
+          />
+        </div>
+
+        <div class="d-flex justify-content-end mt-5 botones-container" >
+          <button *ngIf="modoVista" class="btn btnBack" routerLink="../tabla">
+            VOLVER
+          </button>
+          <button
+            *ngIf="!modoVista"
+            type="button"
+            class="btnDelete btn"
+            (click)="eliminar()"
+          >
+            ELIMINAR
+          </button>
+          <button
+            [ngClass]="{ btn: true, btnVista: modoVista, btnAdd: !modoVista }"
+            (click)="modoVista ? activarModoEdicion() : actualizaPB()"
+          >
+            {{ modoVista ? "EDITAR" : "ACTUALIZAR" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

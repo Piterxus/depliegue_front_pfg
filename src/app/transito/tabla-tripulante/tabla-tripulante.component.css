@@ -1,0 +1,37 @@
+.table
+{
+  
+border-radius: 10px 0px 0px 10px;
+border: 1px solid var(--Wedgewood-400, #769CBA);
+background: var(--Wedgewood-400, #769CBA);
+width: 80%;
+height: 40%;
+margin-top: 25px;
+margin-bottom: 15px;
+margin-left: 50px;
+
+}
+.agregar-tripulante-link {
+    position: relative;
+    right: -400px; 
+    top: 20px;/* Ajusta la posición horizontal según necesites */
+  }
+  
+.cabeceraDatos>th
+{
+    
+    border-right: 1px solid var(--Wedgewood-400, #769CBA);
+    background: var(--Wedgewood-400, #769CBA);
+    color: white;
+      
+}
+.img
+{
+    position: relative;
+    left: 500px;
+   
+}
+input
+{
+    width: 120px;
+}

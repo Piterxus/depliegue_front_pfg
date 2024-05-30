@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <form action="" class="row" (ngSubmit)="updateUser()">
+    <div class="formLeft col">
+      <div class="mb-3 d-flex">
+        <label for="usuario" class="form-label">Nombre de usuario:</label>
+        <input
+          name="NombreUsuario"
+          type="text"
+          class="form-control mt-4"
+          placeholder="Nombre de Usuario"
+          [(ngModel)] = "user.NombreUsuario"
+        />
+      </div>
+      <div class="mb-3 d-flex">
+        <label for="telefono" class="form-label">Teléfono:</label>
+        <input
+          name="Telefono"
+          type="text"
+          class="form-control mt-4"
+          placeholder="Teléfono"
+          [(ngModel)] = "user.Telefono"
+        />
+      </div>
+      <div class="mb-3 d-flex">
+        <label for="email" class="form-label">Email:</label>
+        <input
+          name="email"
+          type="email"
+          class="form-control mt-4"
+          placeholder="Email"
+          [(ngModel)] = "user.email"
+        />
+      </div>
+      <div class="mb-3 d-flex">
+        <label for="direccion" class="form-label">Dirección:</label>
+        <input
+          name="Direccion"
+          type="text"
+          class="form-control mt-4"
+          placeholder="Dirección"
+          [(ngModel)] = "user.Direccion"
+        />
+      </div>
+    </div>
+    <div class="formRight col">
+      <!-- <div class="mb-3 d-flex">
+        <label for="contraseña" class="form-label">Contraseña:</label>
+        <input
+          name="password"
+          type="password"
+          class="form-control mt-4"
+          placeholder="Contraseña"
+          [(ngModel)] = "user.password"
+        />
+      </div>
+      <div class="mb-3 d-flex">
+        <label for="contraseña" class="form-label">Confirmar contraseña:</label>
+        <input
+          name="confirm"
+          type="password"
+          class="form-control mt-4"
+          placeholder="Confirmar"
+          [(ngModel)] = "confirmPassword"
+        />
+      </div> -->
+
+      <div class="mb-3 d-flex">
+        <label for="imagen" class="form-label">Imagen:</label>
+        <input name="Imagen" type="file" class="form-control mt-4" />
+      </div>
+      <div class="d-flex justify-content-center">
+        <img
+          class="imgUser"
+          [src]="'/assets/img/embarcaciones/image-outline.svg'"
+          alt=""
+        />
+      </div>
+     
+    </div>
+     <div class="d-flex justify-content-center mt-5 btnsPerfil">
+        <button class="btn btnCancelar" routerLink="../panel">CANCELAR</button>
+        <button type="submit" class="btn btnAdd">MODIFICAR</button>
+      </div>
+  </form>
+</div>

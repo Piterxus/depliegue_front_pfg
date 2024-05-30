@@ -1,0 +1,86 @@
+<ng-container *ngIf="click === true">
+  <img
+    (click)="anyadirTripulante()"
+    class="agregar-tripulante-link"
+    src="/assets/img/transitos/Vector.svg"
+    alt=""
+  />
+</ng-container>
+<table
+  class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped"
+>
+  <thead class="cabeceraDatos text-center">
+    <tr class="cabeceraDatos text-center">
+      <th>NOMBRE </th>
+      <th>SEXO</th>
+      <th>DOCUMENTO</th>
+      <th>NACIONALIDAD</th>
+    </tr>
+
+    <tr></tr>
+  </thead>
+  <tbody>
+    <!-- muestra los datos que hay solo en vista -->
+    <ng-container *ngIf="mostrarDatos && !crearTripulante">
+      <tr *ngFor="let item of datos; let i = index" class="text-center">
+        <td>{{ item.NumeroDeDocumento }}</td>
+        <td>{{ item.Nombre }}</td>
+        <td>{{ item.Sexo }}</td>
+        <td>{{ item.Nacionalidad }}</td>
+      </tr>
+    </ng-container>
+    <!-- es la tabal que se mostrará en la creacion-->
+    <ng-container *ngIf="!mostrarDatos && !crearTripulante">
+      <tr style="width: 200px; height: 50px">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    
+    </ng-container>
+    <!-- muestra inputs cuando se crea un nuevo tripulante -->
+    
+    <ng-container *ngIf="crearTripulante && !mostrarDatos">
+      <ng-container *ngFor="let index of [0, 1, 2, 3]"> <!-- Iterar exactamente 4 veces -->
+        <tr style="width: 200px; height: 50px">
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[index].NumeroDeDocumento" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[index].Nombre" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[index].Sexo"  />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[index].Nacionalidad"  />
+          </td>
+        </tr>
+      </ng-container>
+ 
+    </ng-container>
+    
+    <!-- muestra datos y permite modificacion  -->
+    <ng-container *ngIf="crearTripulante && mostrarDatos">
+      
+      <ng-container *ngFor="let dato of datos; let i = index">
+        <tr style="width: 200px; height: 50px">
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[i].NumeroDeDocumento" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[i].Nombre" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[i].Sexo"  />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="tripulantes[i].Nacionalidad"  />
+          </td>
+        </tr>
+      </ng-container>
+      
+    </ng-container>
+  </tbody>
+</table>

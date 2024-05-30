@@ -1,0 +1,41 @@
+<div class="tablaMiembros">
+  <div class="d-flex flex-row-reverse mb-2">
+
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <table [dtTrigger]="dtTrigger" datatable [dtOptions]="dtOptions"
+      class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped">
+    
+      <thead>
+        <tr>
+          <th [attr.colspan]="12" class="cabeceraTabla">
+            MIEMBROS
+            <a routerLink="./formulario" [queryParams]="{ tipo: 'vacio' }">
+              <img class="addIcon" [src]="'/assets/img/add_solid.svg'" alt="" />
+            </a>
+          </th>
+        </tr>
+        <tr class="cabeceraDatos">
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Apellido</th>
+          <th class="text-center">Parentesco</th>
+          <th class="text-center">Edad</th>
+          <th class="text-center">Costo</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr (click)="someClickHandler(i)" *ngFor="let item of datos; let i = index" class="text-center">
+          <td>{{ item.Nombre }}</td>
+          <td>{{ item.Apellido }}</td>
+          <td>{{ item.Parentesco }}</td>
+          <td>{{ calcularEdad(item.FechaNacimiento) }}</td>
+          <td *ngIf="item.Parentesco === 'Cónyuge'">200 €</td>
+          <td *ngIf="item.Parentesco === 'Otro'">250 €</td>
+     
+        </tr>
+     
+      </tbody>
+    </table>
+  </div>
+</div>

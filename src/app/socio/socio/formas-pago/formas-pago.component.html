@@ -1,0 +1,39 @@
+<div class="d-flex flex-column">
+ 
+    <div class="tablaFormas">
+     
+      <div class="d-flex align-items-center justify-content-center">
+        <!-- <table [dtTrigger]="dtTrigger" datatable [dtOptions]="dtOptions" class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped"> -->
+        <table
+          class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped"
+        >
+          <thead>
+            <tr>
+              <th [attr.colspan]="12" class="cabeceraTabla">
+                FACTURA PENDIENTE
+         
+              </th>
+            </tr>
+            <tr class="cabeceraDatos">
+              <th class="text-center">TOTAL</th>
+
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+        
+            <tr>
+              <td>{{facturaSeleccionada.Total}} €</td>
+
+              <td>
+                <button (click)="pagar()" class="btn btn-success">PAGAR</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+  
+
+</div>

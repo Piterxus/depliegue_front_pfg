@@ -1,0 +1,127 @@
+<div class="d-flex justify-content-center">
+    <button class="imprimir btn btn-primary" printSectionId="demo" [useExistingCss]="true" ngxPrint>Imprimir</button>
+</div><br>
+<div class="d-flex justify-content-center align-item-center">
+ 
+    <div class="detalleFactura" id="demo">
+        <div class="row logo">
+            <img class="facturaLogo" [src]="'/assets/img/socios/portoslogoPDF.svg'" alt="" />
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="datosPortos">
+                <ul>
+
+                    <li>CIF: 12345678A</li>
+                    <li>Calle Galicia</li>
+                    <li>Lugo, CP: 12345</li>
+                    <li>puntal@gmail.com</li>
+                    <li>Teléfono: 123456789</li>
+
+                </ul>
+            </div>
+            <div class="fechaFactura">
+                <p>Fecha: {{facturaDetalle.Fecha_emision}}</p>
+            </div>
+        </div>
+        <div class="datosSocio">
+            <strong>DATOS SOCIO</strong>
+            <ul>
+                <li>{{userInfo?.NombreCompleto}}</li>
+                <li>{{userInfo?.Direccion}}</li>
+                <li>{{userInfo?.email}}</li>
+                <li>{{userInfo?.Telefono}}</li>
+               
+
+            </ul>
+        </div>
+        <hr>
+
+ 
+        <!-- Tarifas -->
+        <div class="row" *ngIf="lineasFactura && lineasFactura.length > 0">
+            <div class="col-12">
+                <strong>TARIFAS</strong>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let linea of lineasFactura">
+                            <ng-container *ngIf="linea.Descripcion !== 'Descuento de socio' && linea.Descripcion !== 'Alquiler de embarcación'">
+                                <td>{{ linea.Descripcion }}</td>
+                                <td>{{ linea.importe }}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <strong>AMARRES</strong>
+            </div>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let linea of lineasFactura">
+                            <ng-container *ngIf="linea.Descripcion === 'Alquiler de embarcación'">
+                                <td>{{ linea.Descripcion }}</td>
+                                <td>{{ linea.importe }}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <strong>DESCUENTOS</strong>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Descripción</th>
+                            <th>Importe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let linea of lineasFactura">
+                            <ng-container *ngIf="linea.Descripcion === 'Descuento de socio'">
+                                <td>{{ linea.Descripcion }}</td>
+                                <td>{{ linea.porcentaje }}</td>
+                            </ng-container>
+                             <ng-container *ngIf="linea.Descripcion === 'Descuento de amarres'">
+                                <td>{{ linea.Descripcion }}</td>
+                                <td>{{ linea.porcentaje }}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <strong>TOTAL</strong>
+                {{facturaDetalle.Total}}
+            </div>
+    </div>

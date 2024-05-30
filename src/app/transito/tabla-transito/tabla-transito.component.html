@@ -1,0 +1,39 @@
+<div class="tablaTransito">
+  <div class="d-flex flex-row-reverse mb-2">
+    <a class="enlaceCreateTra" routerLink="../formulario"
+    [queryParams]="{ tipo: 'vacio' }">TRANSITOS</a></div>
+    <table [dtTrigger]="dtTrigger"  datatable [dtOptions]="dtOptions" class="table table-hover table-custom-hover rounded-3 overflow-hidden table-striped">
+      <thead>
+        <th [attr.colspan]="12" class="cabeceraTabla">
+            TRANSITOS
+        </th>
+        <tr class="cabeceraDatos">
+          <th class="text-center">Fecha entrada</th>
+          <th class="text-center">Fecha salida</th>
+          <th class="text-center">Embarcación</th>
+          <th class="text-center">Instalación</th>
+          <th class="text-center">Amarre</th>
+          <th class="text-center">Pantalán</th>
+          
+     
+        </tr>
+      </thead>
+      <tbody>
+        
+        <!-- se rellena con los datos de transitos y se aplica el evento para seleccionar el transito -->
+        <tr (click)="someClickHandler(i)"*ngFor="let transit of datos; let i = index">
+          <td>{{ transit.FechaEntrada }}</td>
+          <td>{{ transit.FechaSalida }}</td>
+          <td>{{ transit.Matricula }}</td>
+          <td>{{ transit.Instalacion }}</td>
+          <td>{{ transit.Numero }}</td>
+          <td>{{ transit.Pantalan }}</td>
+          
+         
+          
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

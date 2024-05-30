@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div *ngIf="mostrarVacio" class="d-flex justify-content-between">
+    <form *ngIf="mostrarForm" action="" class="d-flex flex-column" id="amarresForm" (submit)="addAmarre()">
+      <!-- <h4 class="text-center">SELECCIONAR EMBARCACION</h4> -->
+      <div class="formLeft">
+
+
+
+        <div class="mb-3 d-flex">
+          <select name="embarcacion" id="embarcacion">
+            <option value="0">Seleccione una embarcación</option>
+            <option *ngFor="let embarcacion of embarcaciones" [value]="embarcacion.id">{{ embarcacion.Nombre }}</option>
+          </select>
+        </div>
+        <div *ngIf="mostrarAmarres">
+          <p>FECHAS TRÁNSITOS</p>
+          <div class="mb-3 d-flex">
+            <label for="fechaInicio" class="form-label">Fecha de inicio:</label>
+            <input name="fechaInicio" type="date" class="form-control mt-4" placeholder="Fecha de inicio" (change)="actualizarFechaMaxima()" [(ngModel)]="fechaInicioAmarre"/>
+          </div>
+          <div class="mb-3 d-flex">
+            <label for="fechaFin" class="form-label">Fecha de finalización:</label>
+            <input name="fechaFin" type="date" class="form-control mt-4" placeholder="Fecha fin" [max]="fechaMaximoFinAmarre" [(ngModel)]="fechaFinAmarre"/>
+          </div>
+        </div>
+        <div *ngIf="mostrarPlazasBase">
+          <p>FECHAS PLAZAS BASE</p>
+          <div class="mb-3 d-flex">
+            <label for="fechaInicio" class="form-label">Fecha de inicio:</label>
+            <input name="fechaInicio" type="date" class="form-control mt-4" [(ngModel)]="fechaInicio"
+              (change)="updateFechaFin(fechaInicio, fechaFin)" placeholder="Fecha de inicio" />
+          </div>
+          <div class="mb-3 d-flex">
+            <label for="fechaFin" class="form-label">Fecha de finalización:</label>
+            <input name="fechaFin" type="date" class="form-control mt-4" [(ngModel)]="fechaFin" [min]="minFechaFin"
+              placeholder="Fecha fin" />
+          </div>
+        </div>
+
+
+        <div class="d-flex  mt-5 btnsAmarre justify-content-between">
+          <button type="button" class="btn btnCancelar" (click)="volver()">
+            CANCELAR
+          </button>
+          <button type="submit" class="btn btnAdd">SOLICITAR</button>
+        </div>
+
+
+      </div>
+
+
+    </form>
+    <div *ngIf="!mostrarForm" class="containerMap d-flex flex-column align-items-center">
+      <div class="d-flex justify-content-between">
+        <h4>AMARRES DISPONIBLES </h4><small>(Posicione el cursor para saber el tipo de amarre y clique en el de su
+          interés)</small>
+      </div>
+      <div id="map">
+
+      </div><br>
+      <button type="button" class="btn btnCancelar" (click)="volver()">
+        CANCELAR
+      </button>
+    </div>
+  </div>
+  <div *ngIf="mostrarVacio === false">
+    <form action="" class="d-flex flex-column">
+      <h4 *ngIf="!modoEdicion" class="text-center">EDITAR AMARRE</h4>
+      <h4 *ngIf="modoEdicion" class="text-center">EDITAR O ELIMINAR AMARRE</h4>
+      <div class="formLeft">
+        <!-- <div class="mb-3 d-flex">
+          <label for="manga" class="form-label">Manga:</label>
+          <input name="Manga" type="number" class="form-control mt-4" placeholder="Manga" min="1"
+            [(ngModel)]="alquilerSeleccionado.boat.Manga" [readOnly]="!modoEdicion" />
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="eslora" class="form-label">Eslora:</label>
+          <input name="Eslora" type="number" class="form-control mt-4" placeholder="Eslora" min="1"
+            [(ngModel)]="alquilerSeleccionado.boat.Eslora" [readOnly]="!modoEdicion" />
+        </div> -->
+        <div class="mb-3 d-flex">
+          <!-- <label for="fechaInicio" class="form-label">Fecha de inicio:</label> -->
+          <input name="fechaInicio" type="date" class="form-control mt-4" placeholder="Fecha de inicio"
+            [(ngModel)]="alquilerSeleccionado.FechaInicio" [readOnly]="!modoEdicion" hidden/>
+        </div>
+        <div class="mb-3 d-flex">
+          <label for="fechaFin" class="form-label">Fecha de finalización:</label>
+          <input name="fechaFin" type="date" class="form-control mt-4" placeholder="Fecha fin"
+            [(ngModel)]="alquilerSeleccionado.FechaFinalizacion" [readOnly]="!modoEdicion" min={{alquilerSeleccionado.FechaFinalizacion}}/>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end mt-5">
+        <button  class="btn btnBack" (click)="volver()">
+          VOLVER
+        </button>
+        <button *ngIf="!modoVista" type="button" class="btnDelete btn" (click)="eliminarAlquiler()">
+          ELIMINAR
+        </button>
+        <button [ngClass]="{ btn: true, btnVista: modoVista, btnAdd: !modoVista }"
+          (click)="modoVista ? activarModoEdicion() : actualizarAmarre()">
+          {{ modoVista ? "EDITAR" : "ACTUALIZAR" }}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
