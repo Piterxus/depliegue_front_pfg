@@ -3,7 +3,7 @@ form {
     padding: 15px;
     border-radius: 5px;
     box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
-    /* width: 50%; */
+
 }
 
 .formLeft {
@@ -33,10 +33,12 @@ input {
 }
 
 
-input[name='Banco'], input[name='IBAN'] {
+input[name='Banco'],
+input[name='IBAN'] {
     background-image: url(/assets/img/socios/icono_banco_form.svg);
 
 }
+
 input[name='Numero'] {
     background-image: url(/assets/img/socios/icono_tarjeta_form.svg);
 
@@ -70,10 +72,3 @@ label {
     width: 100%;
 
 }
-
-
-
-/* .imgUser {
-    width: 200px;
-    height: 200px;
-} */

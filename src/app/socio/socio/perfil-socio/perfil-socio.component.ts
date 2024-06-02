@@ -17,7 +17,7 @@ export class PerfilSocioComponent implements OnInit {
     this.apiService.getUserInfo(this.userId).subscribe(
       (data: any) => {
         this.user = data;
-        console.log('user', this.user);
+
       },
       (error) => {
         console.log('error', error);
@@ -26,13 +26,13 @@ export class PerfilSocioComponent implements OnInit {
   }
 
   updateUser() {
-    console.log('user update', this.user);
+
     this.apiService.update(this.userId, 'usuario', this.user).subscribe(
       (response) => {
         this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
           // Realizar cualquier otra acción necesaria
         });
-        console.log('data', response);
+
       },
       (error) => {
         console.log('error', error);

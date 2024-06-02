@@ -17,17 +17,7 @@ export class ChatComponentComponent implements OnInit {
   ngOnInit(): void {
     console.log('Initializing Pusher...');
     this.websocket();
-    // this.pusher = new Pusher('68d409d444f4762c6bbd', {
-    //   cluster: 'eu',
-    //   // encrypted: true
-    // });
-
-    // console.log('Subscribing to channel...');
-    // const channel = this.pusher.subscribe('my-channel');
-    // channel.bind('NuevoMensaje', (data: any) => {
-    //   console.log('Received message:', data.message);
-    //   this.messages.push(data.message);
-    // });
+ 
   }
 
   websocket(): void {

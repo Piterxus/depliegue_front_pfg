@@ -10,7 +10,6 @@ import { FormaPagoFormComponent } from './formas-pago/forma-pago-form/forma-pago
 import { DataTablesModule } from 'angular-datatables'; 
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { MessageDialogComponent } from 'src/app/message-dialog/message-dialog.component';
 import { EmbarcacionesSocioFormComponent } from './embarcaciones-socio/embarcaciones-socio-form/embarcaciones-socio-form.component';
 

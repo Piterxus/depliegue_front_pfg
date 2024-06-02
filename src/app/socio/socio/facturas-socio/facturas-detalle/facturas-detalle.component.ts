@@ -17,7 +17,7 @@ export class FacturasDetalleComponent implements OnInit{
   
 
   ngOnInit(): void {
-    console.log('Factura seleccionada:', this.facturaSeleccionada)
+    
     this.getUserData(); // Llama al método para obtener la información del usuario al iniciar el componente
     // Obtener los parámetros de la URL
     this.route.queryParams.subscribe(params => {
@@ -36,7 +36,7 @@ export class FacturasDetalleComponent implements OnInit{
       this.apiService.getUserInfo(userId).subscribe(
         (data) => {
           this.userInfo = data; // Asigna los datos del usuario a la variable userInfo
-          console.log('Información del usuario:', this.userInfo);
+         
         },
         (error) => {
           console.error('Error al obtener la información del usuario:', error);
@@ -51,7 +51,7 @@ export class FacturasDetalleComponent implements OnInit{
     this.apiService.getFacturaID(facturaId).subscribe(
       (data) => {
         this.facturaDetalle = data; // Asignar los datos recibidos a la variable
-        console.log('Detalle de la factura:', this.facturaDetalle);
+       
       },
       (error) => {
         console.error('Error al obtener el detalle de la factura:', error);
@@ -64,7 +64,7 @@ export class FacturasDetalleComponent implements OnInit{
     this.apiService.getLineasFactura(facturaId).subscribe(
       (data) => {
         this.lineasFactura = data; // Asignar los datos recibidos a la variable
-        console.log('Líneas de la factura:', this.lineasFactura);
+       
       },
       (error) => {
         console.error('Error al obtener el detalle de la factura:', error);

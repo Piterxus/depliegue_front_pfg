@@ -24,7 +24,7 @@ export class FormasPagoComponent implements OnInit {
     this.mostrarFactura();
   }
   mostrarFormulario(tipo: string) {
-    console.log('tipo', tipo);
+   
     this.tipoFormulario = tipo;
     this.router.navigate([], { relativeTo: this.route, queryParams: { tipo: tipo }, queryParamsHandling: 'merge' });
     this.mostrarTablas = false;
@@ -37,7 +37,7 @@ export class FormasPagoComponent implements OnInit {
 
   mostrarFactura() {
     this.apiservice.getFacturaID(this.facturaId).subscribe((data: any) => {
-      console.log('data', data);
+    
       this.facturaSeleccionada = data;
     }, (error) => {
       console.log('error', error);
@@ -49,9 +49,8 @@ export class FormasPagoComponent implements OnInit {
 
     if (tieneFondos) {
       this.apiservice.update(this.facturaId, "factura", { estado: 'Pagada' }).subscribe((data: any) => {
-        console.log('data', data);
+        
 
-        // this.router.navigate(['/socio/facturas']);
       }, (error) => {
         console.log('error', error);
       }

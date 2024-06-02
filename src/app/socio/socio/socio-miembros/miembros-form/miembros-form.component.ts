@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
-import { catchError } from 'rxjs';
 import { SharedDataService } from 'src/app/services/shared-data/shared-data.service';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 @Component({
@@ -35,14 +33,14 @@ export class MiembrosFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('id') || '';
-    console.log("User", this.userId);
+   
     this.activatedRoute.queryParams.subscribe(params => {
       const tipo = params['tipo'];
       const mi = params['mi'];
       this.mostrarVacio = tipo === 'vacio';
       this.apiservice.getFamiliar(mi).subscribe((data: any) => {
         this.miembroSeleccionado = data;
-        console.log(this.miembroSeleccionado);
+       
       });
 
     });
@@ -68,7 +66,7 @@ export class MiembrosFormComponent implements OnInit{
     const parentescoSeleccionado = parentescoSelect.options[parentescoSelect.selectedIndex].value;
     formData.append('Parentesco', parentescoSeleccionado);
     formData.append('tipo', 'miembro');
-    console.log(formData);
+
     if (formData.get('FechaNacimiento') == ""){
       this.dialogService.mostrarMensaje({ title: 'FALTAN DATOS', message: "Por favor, rellene todos los campos." }).subscribe(() => {
         // Realizar cualquier otra acción necesaria
@@ -97,10 +95,9 @@ export class MiembrosFormComponent implements OnInit{
             // Realizar cualquier otra acción necesaria
           });
           // Manejar la respuesta del servidor aquí
-          console.log('Respuesta del servidor:', response);
+         
           this.volver()
-          // Realizar cualquier otra acción necesaria, como navegar a otra ruta
-          // this.router.navigate(['/miembros']);
+        
         },
         (error) => {
           // Manejar cualquier error que ocurra durante la solicitud POST
@@ -113,13 +110,11 @@ export class MiembrosFormComponent implements OnInit{
         }
       );
    
-    this.apiservice.add("notificacionSocio", { "titulo": "Solicitud de alta de miembro", "mensaje": JSON.stringify({ "Nombre": formData.get('Nombre'), "Apellidos": formData.get('Apellidos'), "Fecha Nacimiento": formData.get('FechaNacimiento'), "DNI": formData.get('dni'), "Parentesco": formData.get('Parentesco') }), "tipo": formData.get('tipo'), "userId": this.userId}).subscribe(
-        (response) => {
-          // Manejar la respuesta del servidor aquí
-          console.log('Respuesta del servidor:', response);
-          // Realizar cualquier otra acción necesaria, como navegar a otra ruta
-          // this.router.navigate(['/miembros']);
-        },
+    this.apiservice.add("notificacionSocio", { "titulo": "Solicitud de alta de miembro", "mensaje": JSON.stringify({ "Nombre": formData.get('Nombre'), "Apellidos": formData.get('Apellidos'), "Fecha Nacimiento": formData.get('FechaNacimiento'), "DNI": formData.get('dni'), "Parentesco": formData.get('Parentesco') }), "tipo": formData.get('tipo'), "userId": this.userId }).subscribe((response) => {
+      console.log('Solicitud enviada');
+
+    },
+      
         (error) => {
           // Manejar cualquier error que ocurra durante la solicitud POST
           console.error('Error al añadir el miembro:', error);
@@ -130,14 +125,21 @@ export class MiembrosFormComponent implements OnInit{
 
   }
   eliminarMiembro() {
-    console.log(this.miembroSeleccionado.id);
+   
+    this.apiservice.bajaMiembro(this.miembroSeleccionado.id).subscribe(
+   
+      (error) => {
+        //
+        console.error('Error al eliminar el miembro:', error);
+       
+      }
+    );
     this.apiservice.delete(this.miembroSeleccionado.id, "familiar").subscribe(
       (response) => {
         this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
           // Realizar cualquier otra acción necesaria
         });
-        // Manejar la respuesta del servidor aquí
-        console.log('Respuesta del servidor:', response);
+       
         this.volver()
       },
       (error) => {
@@ -150,6 +152,7 @@ export class MiembrosFormComponent implements OnInit{
         // Realizar cualquier acción adicional en caso de error, como mostrar un mensaje al usuario
       }
     );
+
    
   }
 

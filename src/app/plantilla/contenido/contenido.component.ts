@@ -84,10 +84,9 @@ export class ContenidoComponent implements OnInit, AfterViewInit, OnChanges {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
-      console.log('NAVIAGTION START');
-      console.log('Ruta actual ->:', this.route.children[0].snapshot.data['breadcrumb']);
+      
       this.breadcrumb = this.route.children[0].snapshot.data['breadcrumb'];
-      console.log('Ruta actual bread:', this.breadcrumb);
+      
 
       if (this.breadcrumb){
         // alert('Ruta actual ->:' + this.currentRoute + " > " + this.breadcrumb);
@@ -106,21 +105,6 @@ export class ContenidoComponent implements OnInit, AfterViewInit, OnChanges {
 
    
 
-    // Mostrar por consola la ruta actual
-    // this.router.events.pipe(
-    //   filter(event => event instanceof NavigationEnd)
-    // ).subscribe(() => {
-    //   // this.currentRoute = this.router.url;
-    //   // this.currentRoute = document.location.toString();
-
-    //   if (this.document.location.href === 'http://localhost:4200/panel') {
-    //     this.currentRoute = 'Inicio';
-    //   }
-   
-    //   console.log('Ruta actual:', this.router.url);
-    //   // this.cdr.detectChanges();
-    // });
-    console.log('Location', document.location.href);
   }
 
   ngAfterViewInit() {
@@ -133,7 +117,7 @@ export class ContenidoComponent implements OnInit, AfterViewInit, OnChanges {
       });
     });
 
-    console.log('Location change newinit', document.location.href);
+    
   }
 
   ngOnChanges() {
@@ -150,7 +134,7 @@ export class ContenidoComponent implements OnInit, AfterViewInit, OnChanges {
 
 
 
-    console.log('Location change', document.location.href);
+    
   }
 
   

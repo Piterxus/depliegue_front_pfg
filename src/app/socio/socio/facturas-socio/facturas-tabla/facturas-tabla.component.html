@@ -1,11 +1,6 @@
 <div class="tablaMiembros">
   <div class="d-flex flex-row-reverse mb-2">
-    <!-- <a
-      class="enlaceCreateMember"
-      routerLink="../formulario"
-      [queryParams]="{ tipo: 'vacio' }"
-      >MIEMBRO</a
-    > -->
+
   </div>
   <div class="d-flex align-items-center justify-content-center">
     <table
@@ -27,7 +22,6 @@
           <th class="text-center">Estado</th>
           <th class="text-center">Importe</th>
 
-          <!-- <th></th> -->
         </tr>
       </thead>
       <tbody>
@@ -40,30 +34,9 @@
           <td>{{ item.vencimiento }}</td>
           <td>{{ item.estado }}</td>
           <td>{{ item.Total }}</td>
-          <!-- <td>
-            <a (click)="verDetalle()">
-              <img
-                class="verFactura"
-                [src]="'/assets/img/socios/view.svg'"
-                alt=""
-              />
-            </a>
-          </td> -->
+      
         </tr>
-        <!-- <tr>
-          <td>Prueba</td>
-          <td>Prueba</td>
 
-          <td>
-            <a (click)="verDetalle()">
-              <img
-                class="verFactura"
-                [src]="'/assets/img/socios/view.svg'"
-                alt=""
-              />
-            </a>
-          </td>
-        </tr> -->
       </tbody>
     </table>
   </div>

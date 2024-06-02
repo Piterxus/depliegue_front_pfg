@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/services/api/api.service';
 import { map } from 'rxjs/operators';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 import { Location } from '@angular/common';
+import { response } from 'express';
 @Component({
   selector: 'app-forma-pago-form',
   templateUrl: './forma-pago-form.component.html',
@@ -29,34 +30,22 @@ export class FormaPagoFormComponent implements OnInit {
     'SE': 24, 'CH': 21, 'TN': 24, 'TR': 26, 'UA': 29, 'AE': 23,
     'GB': 22, 'VG': 24
   };
-  // @Output() volver = new EventEmitter<boolean>();
+
 
   constructor(private apiservice: ApiService, private dialogService: DialogService, private _location: Location) { }
 
   ngOnInit(): void {
-    this.userId = localStorage.getItem('id') || '';
-    this.apiservice.getAll('metodopago').pipe(
-      map((data: any) => {
-        this.data = data;
-        this.cuenta = this.data.find((element: any) => {
-          console.log('Comparando', element.titular, 'con', parseInt(this.userId));
-          return element.titular === parseInt(this.userId);
-        });
-        console.log('cuenta', this.cuenta);
-        if (this.cuenta) {
 
-        } else {
-          console.log('no tiene cuenta');
-        }
-      })
-    ).subscribe(
-      (data: any) => {
-        console.log('data', data);
-      },
-      (error) => {
-        console.log('error', error);
-      }
-    );
+    this.apiservice.getAll('metodopago').subscribe((data: any) => {
+      this.data = data;
+      this.userId = localStorage.getItem('id') || '';
+      this.cuenta = this.data.find((element: any) => {
+        return element.titular === parseInt(this.userId);
+      });
+
+
+    });
+
 
   }
 
@@ -127,10 +116,10 @@ export class FormaPagoFormComponent implements OnInit {
     // Verificar si el CVV tiene 3 o 4 dígitos y son numéricos
     const cvvRegex: RegExp = /^\d{3,4}$/;
     return cvvRegex.test(cvv);
-}
+  }
 
   updateCuenta() {
-    console.log('cuenta', this.newCuenta);
+
     if (this.tipo === 'tarjeta') {
       if (this.newCuenta.Numero === '' || this.newCuenta.expira === '' || this.newCuenta.CVV === '') {
         this.dialogService.mostrarMensaje({ title: 'Error', message: 'Faltan datos' }).subscribe(() => {
@@ -143,10 +132,10 @@ export class FormaPagoFormComponent implements OnInit {
           // Realizar cualquier otra acción necesaria
         });
         return;
-      } 
+      }
       if (!this.validarCVV(this.newCuenta.CVV)) {
         this.dialogService.mostrarMensaje({ title: 'Error', message: 'CVV no válido' }).subscribe(() => {
-          // Realizar cualquier otra acción necesaria
+
         });
         return;
       }
@@ -155,9 +144,9 @@ export class FormaPagoFormComponent implements OnInit {
       this.apiservice.update(this.cuenta.id, 'metodopago', this.newCuenta).subscribe(
         (response) => {
           this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
-            // Realizar cualquier otra acción necesaria
+
           });
-          console.log('data', response);
+
         },
         (error) => {
           console.log('error', error);
@@ -174,18 +163,18 @@ export class FormaPagoFormComponent implements OnInit {
       }
       if (!this.isValidIBAN(this.newCuenta.IBAN)) {
         this.dialogService.mostrarMensaje({ title: 'Error', message: 'IBAN no válido' }).subscribe(() => {
-          // Realizar cualquier otra acción necesaria
+
         });
         return;
-      } 
+      }
       this.newCuenta.Numero = null;
       this.newCuenta.expira = null;
       this.apiservice.update(this.cuenta.id, 'metodopago', this.newCuenta).subscribe(
         (response) => {
           this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
-            // Realizar cualquier otra acción necesaria
+
           });
-          console.log('data', response);
+
         },
         (error) => {
           console.log('error', error);

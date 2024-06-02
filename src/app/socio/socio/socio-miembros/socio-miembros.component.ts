@@ -47,6 +47,7 @@ export class SocioMiembrosComponent implements OnInit, OnDestroy{
   someClickHandler(index: number): void {
     // Obtiene los datos de la fila seleccionada
     const rowData = this.datos[index];
+
     // Navega a formulario vista con los datos de la fila seleccionada
     // this.sharedDataService.setData("miembroSeleccionado", rowData);
     this.router.navigate(['/miembros/formulario'], {
@@ -66,7 +67,7 @@ export class SocioMiembrosComponent implements OnInit, OnDestroy{
       this.apiService.getFamiliaresID(userId).subscribe(
         (data: any) => {
           this.datos = data;
-          console.log('Después de la llamada a la API:', this.datos);
+         
           this.dtTrigger.next(data);
         }
       );

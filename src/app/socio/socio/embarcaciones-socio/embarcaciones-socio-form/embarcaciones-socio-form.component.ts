@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api/api.service';
-import { catchError } from 'rxjs';
 import { SharedDataService } from 'src/app/services/shared-data/shared-data.service';
 import { DialogService } from 'src/app/services/dialog/dialog.service';
 
@@ -46,7 +44,7 @@ export class EmbarcacionesSocioFormComponent implements OnInit {
           // Realizar cualquier otra acción necesaria
         });
         this.volver();
-        console.log('Respuesta del servidor:', response);
+       
       },
       (error) => {
         this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: "ERROR DEL SERVIDOR" }).subscribe(() => {
@@ -60,15 +58,15 @@ export class EmbarcacionesSocioFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('id') || '';
-    console.log("User", this.userId);
+
     this.activatedRoute.queryParams.subscribe(params => {
       const tipo = params['tipo'];
       const ai = params['ai'];
       this.mostrarVacio = tipo === 'vacio';
-      if (!this.mostrarVacio){
+      if (!this.mostrarVacio) {
         this.apiservice.getEmbarcacionId(ai).subscribe((data: any) => {
           this.embarcacionSeleccionada = data;
-          console.log('EMBARCACIÓN: ', this.embarcacionSeleccionada);
+        
         });
       }
 
@@ -95,18 +93,16 @@ export class EmbarcacionesSocioFormComponent implements OnInit {
     formData.append('Modelo', formulario['Modelo'].value);
     formData.append('Nombre', formulario['Nombre'].value);
     formData.append('Tipo', formulario['Tipo'].value);
-    console.log("Fuckin Formulario", formData);
+
     this.apiservice.add("embarcacion", formData).subscribe(
       (response) => {
 
         this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
           // Realizar cualquier otra acción necesaria
         });
-        // Manejar la respuesta del servidor aquí
-        console.log('Respuesta del servidor:', response);
+    
         this.volver();
-        // Realizar cualquier otra acción necesaria, como navegar a otra ruta
-        // this.router.navigate(['/miembros']);
+     
       },
       (error) => {
         // Manejar cualquier error que ocurra durante la solicitud POST
@@ -118,18 +114,13 @@ export class EmbarcacionesSocioFormComponent implements OnInit {
         // Realizar cualquier acción adicional en caso de error, como mostrar un mensaje al usuario
       }
     );
-    this.apiservice.add("notificacionSocio", { "titulo": "Solicitud de alta embarcación", "mensaje": JSON.stringify({ "Matricula": formData.get("Matricula"), "Manga": formData.get("Manga"), "Eslora": formData.get("Eslora"), "Origen": formData.get("Origen"), "Titular": formData.get("Titular"), "Numero_registro": formData.get("Numero_registro"), "Datos_tecnicos": formData.get("Datos_tecnicos"), "Modelo": formData.get("Modelo"), "Nombre": formData.get("Nombre"), "Tipo": formData.get("Tipo")  }), tipo: "embarcacion", "userId": this.userId }).subscribe(
-      (response) => {
-        console.log('Respuesta del servidor:', response);
-        // Manejar la respuesta del servidor aquí
-        // this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
-        //   // Realizar cualquier otra acción necesaria
-        // });
-        // console.log('Respuesta del servidor:', response);
-        // this.volver();
-      },
+    this.apiservice.add("notificacionSocio", { "titulo": "Solicitud de alta embarcación", "mensaje": JSON.stringify({ "Matricula": formData.get("Matricula"), "Manga": formData.get("Manga"), "Eslora": formData.get("Eslora"), "Origen": formData.get("Origen"), "Titular": formData.get("Titular"), "Numero_registro": formData.get("Numero_registro"), "Datos_tecnicos": formData.get("Datos_tecnicos"), "Modelo": formData.get("Modelo"), "Nombre": formData.get("Nombre"), "Tipo": formData.get("Tipo") }), tipo: "embarcacion", "userId": this.userId }).subscribe((response) => {
+      console.log('Solicitud enviada');
+     
+    },
+   
       (error) => {
-        // Manejar cualquier error que ocurra durante la solicitud DELETE
+       
         console.error('Error al actualizar el alquiler:', error);
         this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: "Error del servidor" }).subscribe(() => {
           // Realizar cualquier otra acción necesaria
@@ -146,12 +137,12 @@ export class EmbarcacionesSocioFormComponent implements OnInit {
 
     this.apiservice.update(this.embarcacionSeleccionada.id, "embarcacion", this.embarcacionSeleccionada).subscribe(
       (response) => {
-        console.log('Respuesta del servidor:', response);
+       
         // Manejar la respuesta del servidor aquí
         this.dialogService.mostrarMensaje({ title: 'Respuesta del servidor', message: response.message }).subscribe(() => {
           // Realizar cualquier otra acción necesaria
         });
-        console.log('Respuesta del servidor:', response);
+        
         this.volver();
       },
       (error) => {
@@ -167,5 +158,5 @@ export class EmbarcacionesSocioFormComponent implements OnInit {
   }
 
 
-  
+
 }

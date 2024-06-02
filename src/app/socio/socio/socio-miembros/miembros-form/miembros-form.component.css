@@ -5,9 +5,11 @@ form {
     box-shadow: 10px 5px 10px rgba(0, 0, 0, 0.5);
     /* width: 50%; */
 }
-h4{
+
+h4 {
     font-family: Questrial;
 }
+
 .formLeft {
     margin-right: 100px;
 }
@@ -30,7 +32,8 @@ input {
 
 }
 
-input[name='Nombre'], input[name='Apellidos'] {
+input[name='Nombre'],
+input[name='Apellidos'] {
     background-image: url(/assets/img/formIcon_user.svg);
 
 }
@@ -115,7 +118,3 @@ label {
     color: var(--wedgewood50);
     border-color: var(--wedgewood700);
 }
-/* .imgUser {
-    width: 200px;
-    height: 200px;
-} */

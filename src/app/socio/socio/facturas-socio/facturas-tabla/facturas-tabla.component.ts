@@ -24,20 +24,10 @@ export class FacturasTablaComponent implements OnInit, OnDestroy {
 
   verDetalle() {
     this.router.navigate(['/facturas/detalle-factura']);
-    // this.router.navigate(['/formas-pago']);
+
   }
 
-  // someClickHandler(index: number): void {
-  //   // Obtiene los datos de la fila seleccionada
-  //   const rowData = this.datos[index];
-  //   // alert(rowData.id);
-  //   // Navega a formulario vista con los datos de la fila seleccionada
-  //   this.sharedDataService.setData("facturaSeleccionada", rowData);
-  //   this.router.navigate(['/facturas/detalle-factura'], {
-  //     queryParams: { id: rowData.id }  // Redirige a la vista de detalle de factura con el id de la factura como parámetro
-  //   }); // Si no es con ruta abosluta, no funciona
 
-  // }
   someClickHandler(index: number): void {
     // Obtiene los datos de la fila seleccionada
     const rowData = this.datos[index];
@@ -73,14 +63,14 @@ export class FacturasTablaComponent implements OnInit, OnDestroy {
       this.apiService.getFacturasID(user.id).subscribe((data: any) => {
         this.datos = data;
 
-        console.log('Después de la llamada a la API:', this.datos);
+        
         this.dtTrigger.next(data);
       });
     }
   }
 
   ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
+   
     this.dtTrigger.unsubscribe();
   }
 }

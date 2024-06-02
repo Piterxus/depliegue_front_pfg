@@ -17,7 +17,7 @@ th {
 .cabeceraTabla {
     font-size: 20px;
     font-weight: lighter;
-    text-align: center;
+    
 }
 
 .cabeceraDatos>th {
@@ -26,13 +26,7 @@ th {
     font-weight: bold;
     
 }
-/* .add{
-    width: 20px;
-    margin-left: 20px;
-} */
-/* .deleteIcon{
-   cursor: pointer;
-} */
+
 .table-striped>tbody>tr:nth-child(odd)>td {
     background-color: var(--wedgewood200);
 }
