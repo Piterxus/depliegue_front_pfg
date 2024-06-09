@@ -16,8 +16,8 @@ import { catchError } from 'rxjs/operators';
 }) // Decorador que permite inyectar dependencias al servicio
 export class ApiService {
 
-  // private apiUrl = 'https://www.puntalgbexp.piterxus.com/api/v1/'; URL de la API a la que se realizarán las peticiones remotas
-  private apiUrl = 'http://127.0.0.1:8000/api/v1/';  // URL de la API a la que se realizarán las peticiones locales
+ private apiUrl = 'https://www.puntalgbexp.piterxus.com/api/v1/';  // URL de la API a la que se realizarán las peticiones remotas
+  // private apiUrl = 'http://127.0.0.1:8000/api/v1/';  // URL de la API a la que se realizarán las peticiones locales
   transitoId: any;
 
   constructor(private http: HttpClient, private sharedDataService: SharedDataService) { }
