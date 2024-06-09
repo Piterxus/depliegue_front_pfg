@@ -106,6 +106,10 @@
 
 }
 
+.navLogout{
+  margin-right: 20px;
+}
+
 .headerPanel {
   font-weight: lighter;
   font-family: Questrial;
@@ -153,10 +157,11 @@ input[type='search'] {
 .altLink:focus {
   background-color: #8CA1B4;
   color: #1D2834;
-  padding: 5vh 0 5vh 0;
+  padding: 4vh 0 4vh 0;
 }
-.notIcon{
+.homeIcon{
   width: 20px;
+  margin-left: 10px;
  
 
 }

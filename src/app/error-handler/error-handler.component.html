@@ -1,11 +1,23 @@
+<div class="d-flex flex-column   errorContainer">
 
-
-
-<div class="d-flex align-items-center justify-content-center errorContainer">
   <div class="errorPage">
-      <h1>ERROR</h1>
- 
-  <p>{{errorMessage}}</p>
-   <button class="btn btn-warning"  (click)="goBack()">VOLVER</button>
+    <div class="errorPageHeader d-flex  justify-content-around">
+      <div>
+        <h1>ERROR 404</h1>
+
+        <h2>PÁGINA NO ENCONTRADA</h2>
+        <P>Puede que el vínculo esté desactualizado, la página no exista o quese haya tecleado
+          incorrectamente
+        </P>
+      </div>
+      <div>
+        <!-- <button class="btn btn-warning" (click)="goBack()">VOLVER</button> -->
+        <small>Ir a la página de inicio</small>
+        <img class="homeIcon"  src="/assets/img/socios/home.svg" alt="" (click)="goBack()">
+      </div>
+
+    </div>
+
+
   </div>
 </div>

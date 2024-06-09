@@ -1,24 +1,51 @@
-.errorContainer{
+body{
+    background: linear-gradient(180deg, #354654 0%, #769CBA 99.5%);
+}
+
+.errorContainer {
     font-family: "Inter", sans-serif;
-    background-color: var(--titanWhite50);
-    height: 100vh;
+
+    height: 80vh;
+    width: 90%;
+
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 
 }
-.errorPage{
+
+.errorPage {
     text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    width: 30%;
-    box-shadow: 2px 2px 5px 2px var(--wedgewood950);
+    /* padding: 20px; */
+    height: 100%;
+    width: 100%;
+
     font-family: "Inter", sans-serif;
-    background-color: var(--wedgewood300);
+
+    background-image: url(/assets/img/socios/page_not_found.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.btn{
-    box-shadow: 1px 1px 3px 1px var(--goldenTainoi300);
-    -webkit-text-stroke: 1.5px var(--goldenTainoi900);
-    background-color: var(--goldenTainoi300);
-  color: var(--goldenTainoi900);
+.errorPageHeader {
+    margin-top: 20px;
+
+}
+
+.homeIcon{
+    cursor: pointer;
+}
+
+small{
+    margin-right: 10px;
+}
+
+.btn {
+
     font-size: 16px;
     font-family: "Inter", sans-serif;
 }

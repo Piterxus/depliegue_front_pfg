@@ -25,11 +25,12 @@ import { SocioMiembrosComponent } from './socio/socio/socio-miembros/socio-miemb
 import { SocioModule } from './socio/socio/socio.module';
 import { NgxPrintModule } from 'ngx-print';
 import { DataTablesModule } from 'angular-datatables'; 
-import Pusher from 'pusher-js';
+import Pusher from 'pusher-js'; // Debe estar presente aunque no se use
 import { ChatComponentComponent } from './chat-component/chat-component.component';
 import { EmbarcacionesSocioComponent } from './socio/socio/embarcaciones-socio/embarcaciones-socio.component';
+import { ShipAnimationComponent } from './ship-animation/ship-animation.component';
 @NgModule({
-  declarations: [AppComponent, ErrorHandlerComponent, PanelComponent, SocioAmarresComponent, FormasPagoComponent, FacturasSocioComponent, PerfilSocioComponent, SocioMiembrosComponent, ChatComponentComponent, EmbarcacionesSocioComponent],
+  declarations: [AppComponent, ErrorHandlerComponent, PanelComponent, SocioAmarresComponent, FormasPagoComponent, FacturasSocioComponent, PerfilSocioComponent, SocioMiembrosComponent, ChatComponentComponent, EmbarcacionesSocioComponent, ShipAnimationComponent],
 
   imports: [
     BrowserModule,

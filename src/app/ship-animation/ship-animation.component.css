@@ -1,0 +1,25 @@
+.ship-container {
+    position: fixed;
+    top: 50%;
+    left: -100px;
+    /* Comienza fuera de la pantalla a la izquierda */
+    transform: translateY(-50%);
+}
+
+.ship {
+    width: 100px;
+    /* Ajusta el tamaño de la imagen del barco */
+    animation: sail 5s linear forwards;
+}
+
+@keyframes sail {
+    from {
+        left: -100px;
+        /* Comienza fuera de la pantalla a la izquierda */
+    }
+
+    to {
+        left: 100%;
+        /* Termina fuera de la pantalla a la derecha */
+    }
+}
